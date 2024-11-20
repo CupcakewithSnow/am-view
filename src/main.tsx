@@ -6,6 +6,8 @@ import Root from "./root.tsx";
 import ErrorPage from "./error-page.tsx";
 import Home from "./pages/home/Home.tsx";
 import { getRecommendations } from "./api/recommendations/recommendations.ts";
+import AnimeList from "./pages/anime/list/AnimeList.tsx";
+import AnimeInfo from "./pages/anime/info/AnimeInfo.tsx";
 
 
 const router = createBrowserRouter([
@@ -19,6 +21,16 @@ const router = createBrowserRouter([
         element: <Home />,
         loader: getRecommendations
       },
+      {
+        path: "/anime",
+        element: <AnimeList />,
+        children: [
+          {
+            path: ":id",
+            element: <AnimeInfo />
+          }
+        ]
+      }
     ],
   },
 ]);

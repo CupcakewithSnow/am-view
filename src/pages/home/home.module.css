@@ -1,1 +1,16 @@
-.home {}
+.home {
+    display: flex;
+    flex-direction: column;
+}
+
+.blocks {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+}
+
+.block {
+    min-width: 200px;
+    height: 200px;
+    background-color: azure;
+}

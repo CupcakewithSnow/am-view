@@ -1,13 +1,13 @@
 import { IGetRecommendations } from "src/api/recommendations/recommendations"
-import style from "./recommendation.module.css"
+import style from "../home.module.css"
 
 interface IRecommendationProps {
     recommendation: IGetRecommendations[]
 }
 export default function Recommendations(props: IRecommendationProps) {
-    return <div className={style.recommendations}>
+    return <div className={style.blocks}>
         {props.recommendation.map((recommendation) => (
-            <div className={style.recommendation} key={recommendation.id}>{recommendation.name}</div>
+            <div className={style.block} key={recommendation.id}>{recommendation.name}</div>
         ))}
     </div>
 }
