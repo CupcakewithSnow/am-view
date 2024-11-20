@@ -1,0 +1,11 @@
+.recommendations {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.recommendation {
+    width: 200px;
+    height: 200px;
+    background-color: azure;
+}

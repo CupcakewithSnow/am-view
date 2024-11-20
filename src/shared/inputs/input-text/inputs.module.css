@@ -1,0 +1,10 @@
+.baseInput {
+    width: 200px;
+    padding: 8px;
+
+
+}
+
+.baseInput:focus {
+    outline: 1px solid blue;
+}
