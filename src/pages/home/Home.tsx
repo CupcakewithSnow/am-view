@@ -1,14 +1,25 @@
-import { useLoaderData } from "react-router-dom";
-import { IGetRecommendations } from "../../api/recommendations/recommendations";
+import { useQuery } from "@tanstack/react-query";
+import style from "./home.module.css";
+import { getRecommendations } from "@/api/recommendations/recommendations";
 import Recommendations from "./recommendations/Recommendations";
 import Viewed from "./viewed/Viewed";
-import style from "./home.module.css";
 export default function Home() {
-  const recommendation = useLoaderData() as IGetRecommendations[]
+  const { isLoading, data, error } = useQuery({
+    queryKey: ["recommendations"],
+    queryFn: () => getRecommendations()
+  })
+
+  if (isLoading) {
+    return <div>Loading</div>
+  }
+
+  if (error) {
+    return <div>error</div>
+  }
 
   return (
     <div className={style.home}>
-      <Recommendations recommendation={recommendation} />
+      <Recommendations recommendation={data ?? []} />
       <Viewed />
     </div>
   )

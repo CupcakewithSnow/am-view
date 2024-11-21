@@ -1,10 +1,21 @@
-import { IGetAnime } from "@/api/anime/anime";
-import { useLoaderData } from "react-router-dom";
+import { getAnime } from "@/api/anime/anime";
+import { useQuery } from "@tanstack/react-query";
 
 export default function AnimeList() {
-    const anime = useLoaderData() as IGetAnime[]
-    console.log(anime)
+    const { isLoading, data, error } = useQuery({
+        queryKey: ["anime"],
+        queryFn: () => getAnime()
+    })
+
+    if (isLoading) {
+        return <div>Loading</div>
+    }
+
+    if (error) {
+        return <div>error</div>
+    }
+
     return <div>
-        Anime list
+        {data && data.map((anime) => (<div key={anime.id}>{anime.name}</div>))}
     </div>;
 }

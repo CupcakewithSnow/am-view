@@ -1,46 +1,21 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Outlet,
-  Route,
-  RouterProvider
-} from "react-router-dom";
-import Home from "./pages/home/Home";
-import { getRecommendations } from "./api/recommendations/recommendations";
-import { Nav } from "./widgets";
 import { Suspense } from "react";
-import AnimeList from "./pages/anime/list/AnimeList";
-import { getAnime } from "./api/anime/anime";
-import AnimeInfo from "./pages/anime/info/AnimeInfo";
+import { BrowserRouter } from "react-router-dom";
+import AnimeViewRun from "./AmViewRun";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 
-const RoutesJSX = (
-  <Route path="/" element={
-    <div>
-      <Nav />
-      <div>
-        <Outlet />
-      </div>
-    </div>
-  }>
-    <Route
-      index
-      loader={getRecommendations}
-      element={<Suspense fallback={<div>Loading...</div>}><Home /></Suspense>}
-    ></Route>
-    <Route path="anime">
-      <Route index element={<AnimeList />} loader={getAnime} />
-      <Route path=":id" element={<AnimeInfo />} />
-    </Route>
-  </Route>
-);
-
-const routes = createRoutesFromElements(RoutesJSX);
-
-const router = createBrowserRouter(routes);
+const queryClient = new QueryClient()
 
 function App() {
-  return <RouterProvider router={router} />;
+  return <div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <AnimeViewRun />
+        </QueryClientProvider>
+      </BrowserRouter>
+    </Suspense>
+  </div>
 }
 
 export default App;
