@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
-import { Nav } from "./widgets"
 import Home from "./pages/home/Home"
 import AnimeRoute from "./pages/anime/AnimeRoute"
+import { Nav } from "./components/nav/Nav"
 
 const AnimeViewRun = () => {
     return (
