@@ -5,7 +5,8 @@ export function Nav() {
   return (
     <div className={style.nav}>
       <div className={style.links}>
-        <Link to={`home`}>Home</Link>
+        <Link to={`/`}>Home</Link>
+        <Link to={`anime`}>Anime</Link>
       </div>
       <div className={style.search}>
         <InputText placeholder="Поиск" />

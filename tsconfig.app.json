@@ -12,11 +12,8 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "@pages/*": [
-        "src/pages/*"
-      ],
-      "@api/*": [
-        "src/api/*"
+      "@/*": [
+        "./src/*"
       ]
     },
     /* Bundler mode */

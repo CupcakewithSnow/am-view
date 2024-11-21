@@ -4,6 +4,7 @@ export interface IGetRecommendations {
 }
 
 export function getRecommendations(): Promise<IGetRecommendations[]> {
+    console.log("job started recommendations")
     let result: IGetRecommendations[] = [
         { id: 1, name: "Recommendation 1" },
         { id: 2, name: "Recommendation 2" },
